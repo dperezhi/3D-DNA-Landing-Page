@@ -1,67 +1,27 @@
-import { Canvas, useThree } from '@react-three/fiber'
-import { Suspense, useState, useEffect } from 'react'
-import Loader from "../components/Loader"
-import Dna from "../models/Dna";
+import ScrollModel from '../components/ScrollModel';
 
 const Home = () => {
-
-  const adjustDnaForSize = () => {
-    let screenScale = null;
-    let screenPosition = [-1.25, -3, -5];
-    let rotation = [1.25, -0.07, 0.5]
-
-    if(window.innerWidth <768) {
-      screenScale = [0.9,0.9,0.9];
-    } else {
-      screenScale = [1,1,1];
-    }
-    return [screenScale, screenPosition, rotation]
-  }
-  const [dnaScale, dnaPosition, dnaRotation] = adjustDnaForSize();
-  
-  const ScrollEffects = () => {
-    const {camera} = useThree();
-    const [objectPosition, setObjectPosition] = useState(dnaPosition);
-
-    useEffect(() => {
-      const onScroll = () => {
-        const scrollY = window.scrollY;
-        {/*camera.position.z = 5 - scrollY *0.01;*/}
-        setObjectPosition([-1.25,-3 - scrollY * 0.01, -5]);
-      };
-
-      window.addEventListener('scroll', onScroll);
-
-      return () => {
-        window.removeEventListener('scroll',onScroll);
-      };
-    }, []);
-
-    return <Dna scale={dnaScale} position={objectPosition} rotation = {dnaRotation}/>;
-  };
-
   return (
-    <section className='w-full h-screen relative'>
-      <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
-        Landing-Page/popup
+    <section>
+      <ScrollModel/>
+      <div className='relative z-1'>
+        Landing-Page/pop-up
+        <section className="text-section">Your content here...</section>
+        <section className="text-section">More content here...</section>
+        <section className="text-section">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet ipsum maximus, tempus tellus rhoncus, mattis risus. Cras eu congue elit. Nulla sed interdum purus. Fusce pretium metus bibendum, lacinia nisi in, ultricies orci. In hac habitasse platea dictumst. Mauris commodo erat nec augue auctor facilisis. Ut consectetur nisi et lobortis malesuada. Donec ut mi enim. Etiam sit amet ultricies purus, vitae volutpat dolor. Morbi convallis sem finibus lectus accumsan scelerisque. Phasellus rutrum lacinia porttitor. Vivamus vel gravida nunc. Vestibulum fermentum viverra elit sed semper.
+          Suspendisse mollis sem lacinia felis dignissim, nec congue arcu eleifend. Ut faucibus, sapien blandit facilisis efficitur, risus metus pretium felis, sit amet pulvinar dui velit id dolor. Sed vitae neque in nunc mattis accumsan id ut nibh. Praesent accumsan ipsum in cursus dignissim. Aliquam sed tincidunt felis. Quisque vitae elementum mi. Aenean accumsan nunc id varius porta. Pellentesque diam massa, elementum eu sollicitudin hendrerit, faucibus in nisi. Donec nec consequat purus, in scelerisque mauris.
+          Nam ac maximus urna, ut convallis arcu. Sed lobortis arcu eget urna finibus vestibulum. Etiam sollicitudin sed dolor ut ultrices. Aliquam dictum justo consequat justo cursus, in dignissim ipsum placerat. Suspendisse aliquet euismod nibh quis feugiat. Curabitur et nibh eu ligula semper vulputate. Cras laoreet a mauris quis porttitor. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+          Morbi felis odio, rhoncus in rhoncus nec, scelerisque sit amet libero. Aenean velit ex, volutpat vel nibh eu, iaculis ultricies justo. Donec erat risus, auctor quis sollicitudin id, rutrum a tellus. Phasellus odio enim, iaculis quis rhoncus vitae, dictum in lectus. Quisque sed bibendum diam, sed ultricies nulla. Duis orci quam, ultrices eget metus euismod, mattis convallis felis. Sed non felis felis. In pretium mauris et nisi tempor facilisis. Vestibulum odio est, gravida ut augue a, ullamcorper aliquam ipsum. Morbi viverra, mi in euismod aliquet, enim enim efficitur arcu, vel consequat quam tellus sit amet lectus. Sed vitae viverra sem. Integer lacinia pharetra velit eu eleifend. Etiam et tortor et massa pulvinar eleifend. Aliquam ac maximus urna. Mauris fringilla euismod tellus vel porta.
+          Phasellus nec vulputate est, eget iaculis metus. Proin ac pulvinar tellus. Praesent eu lectus sit amet ex egestas fermentum. Phasellus quis nulla sed eros ornare tincidunt a non odio. Suspendisse pharetra nec velit in ullamcorper. Nullam metus nisl, accumsan sit amet massa porttitor, viverra porttitor mauris. Nunc at mi a nulla commodo vestibulum. Nam vestibulum posuere euismod. Nam sit amet tincidunt nibh, nec porttitor mi. Fusce in ipsum eu magna dictum egestas. Sed mauris enim, lacinia in quam et, pellentesque mattis risus. Nulla sagittis at massa eget dictum. Nam fermentum diam diam, a tempor urna tempus vitae. Morbi porta nisl nisl. Aenean at lorem mi. Praesent pellentesque, tellus non tempus cursus, mauris nulla auctor felis, vel egestas neque quam ut augue.
+          Sed sodales efficitur porta. Sed volutpat, ex quis lacinia semper, lorem arcu auctor dui, sit amet facilisis diam est sed diam. Proin auctor lacus sit amet lorem mattis, nec vestibulum eros lacinia. Sed vitae est eu nisl gravida aliquam. Donec dignissim commodo ante, eget feugiat dolor faucibus vel. Nulla laoreet ipsum sit amet metus ullamcorper auctor. Vivamus eu sem interdum, fringilla tellus in, condimentum est. Morbi mollis sapien sit amet diam interdum, sed mollis tellus dapibus. Vestibulum vitae dapibus dolor. Aenean lectus risus, ullamcorper vehicula efficitur non, mollis ac felis. Aliquam erat volutpat. Mauris at rhoncus massa, in viverra velit.
+          Ut at sapien porta, ornare elit vel, viverra erat. Nulla ultrices bibendum metus sit amet commodo. In pellentesque cursus magna, eget posuere quam rhoncus vel. Etiam efficitur tincidunt quam, tempus aliquam est pulvinar eu. Aenean vel dui dignissim, pulvinar quam a, pulvinar nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras volutpat aliquet nibh, id hendrerit nisl. Aenean in porta nisl. Vestibulum vestibulum risus sem, non dictum turpis viverra ac. Quisque venenatis dolor a ipsum commodo porttitor. Suspendisse dictum elit velit, sit amet iaculis dolor mattis luctus. Maecenas vitae nunc sed lorem commodo suscipit quis sit amet est. Praesent egestas ut nulla sed semper. Nunc tincidunt ligula nibh.
+          Nulla leo velit, tempus ut felis ac, tempor iaculis turpis. Vestibulum eu ultrices nisi, ut elementum turpis. Ut consequat nunc in mauris malesuada, ac elementum ligula convallis. Praesent sed tincidunt urna, nec tristique massa. Etiam tincidunt dapibus velit. In in magna eget purus tincidunt imperdiet vitae nec justo. Aliquam consectetur eros sit amet ex ultricies, id vestibulum nulla faucibus. Sed eget libero id nisl auctor placerat. Aenean convallis leo eros, quis pharetra mauris finibus quis. Nullam ac velit non justo egestas euismod. Morbi finibus nulla turpis, sit amet vestibulum ipsum scelerisque ac. Fusce tempus condimentum suscipit. Quisque libero nulla, tempus vitae scelerisque vitae, vestibulum eu lorem. Nullam aliquam augue mauris, tempor vulputate sapien feugiat sed. Cras eleifend interdum laoreet. Donec lacinia accumsan interdum.
+          Vestibulum id laoreet magna. In pellentesque metus ut risus suscipit, ac faucibus nulla tristique. Vivamus quis placerat ipsum. Curabitur lorem nisl, sagittis vitae imperdiet sed, tempus non lectus. Fusce scelerisque velit eget ante commodo malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec semper fringilla dapibus. Vivamus eu nisi diam. Aliquam enim nibh, auctor sit amet tellus eget, accumsan pellentesque quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Etiam non viverra turpis. Maecenas nisi tellus, auctor ut ornare id, ultricies vel sapien. Aliquam consequat, erat id gravida feugiat, risus metus sagittis purus, eu rhoncus nibh eros a magna. Nullam mi dolor, consequat eu ipsum et, finibus tincidunt felis. Phasellus ultricies vulputate sollicitudin. Curabitur pretium sem vitae laoreet semper. Nulla facilisi. Quisque aliquam fringilla magna non tincidunt.
+        </section>
+        <section className="text-section">And so on...</section>
       </div>
-      <Canvas
-        className="w-full h-screen bg-transparent"
-        camera={{ position: [0, 0, 5], near: 0.1, far: 1000 }}
-      >
-        <Suspense fallback={<Loader />}>
-          <ScrollEffects/>
-          <directionalLight position={[-1,-1,0.5]} intensity={2} />
-          <ambientLight intensity={0.4}/>
-          <pointLight/>
-          <spotLight/>
-          <hemisphereLight skyColor="#b1e1ff" groundColor="#000000" intensity={1}/>
-        </Suspense>
-      </Canvas>
-      <div className="absolute bottom-0 left-0 right-0 z-10 text-center">
-        <p>This text will remain visible even when scrolling.</p>
-      </div>
-      <div style={{ height: '200vh' }}></div> 
     </section>
   )
 }

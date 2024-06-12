@@ -17,8 +17,6 @@ const Dna = (props) => {
     return (
         <a.group ref={dnaRef} {...props} >
             <mesh
-                /*castShadow
-                receiveShadow */
                 geometry={nodes.Cube.geometry} 
                 material={materials.DNA} 
             />

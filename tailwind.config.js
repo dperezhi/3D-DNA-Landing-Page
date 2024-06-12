@@ -27,6 +27,22 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    function({addUtilities}) {
+      const newUtilities = {
+        '.text-section': {
+          height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: '1rem',
+          padding: '0 20px',
+          color: 'black',
+          background: 'transparent',
+        },
+      }
+      addUtilities(newUtilities);
+    }
+  ],
 }
 
